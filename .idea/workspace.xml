@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9dc9721-0e27-4158-9289-b3175b655573" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deliveryFood.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Delivery Food.fig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/card-image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/home.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/promo-img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/rating.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/shopping-cart.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +34,7 @@
       <updated>1602062441843</updated>
       <workItem from="1602062442891" duration="8701000" />
       <workItem from="1602071396775" duration="325000" />
+      <workItem from="1602071786051" duration="723000" />
     </task>
     <servers />
   </component>
