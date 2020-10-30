@@ -37,7 +37,12 @@ const getData = async (url) => {
     return await response.json()
 }
 
-const validName = (str) => {
+const loadCart = () => {
+    if (localStorage.getItem(login)) cart.push(...JSON.parse(localStorage.getItem(login)))
+
+}
+const saveCart = () => localStorage.setItem(login, JSON.stringify(cart))
+const validName = str => {
     const regName = /^[a-zA-Z0-9-_\.]{1,20}$/
     return regName.test(str)
 }
@@ -55,6 +60,7 @@ const authorized = () => {
 
     const logOut = () => {
         login = null
+        cart.length = 0
         localStorage.removeItem('deliveryFoodLogin')
         buttonAuth.style.display = ''
         userName.style.display = ''
@@ -70,10 +76,11 @@ const authorized = () => {
     buttonOut.style.display = 'flex'
     cartButton.style.display = 'flex'
     buttonOut.addEventListener('click', logOut)
+    loadCart()
 }
 const notAuthorized = () => {
 
-    const logIn = (event) => {
+    const logIn = event => {
         event.preventDefault()
         if (validName(logInInput.value)) {
             login = logInInput.value
@@ -121,7 +128,7 @@ const enableScroll = () => {
     document.body.style.cssText = ``
     window.scroll({top: document.body.dbScrollY})
 }
-const createCardRestaurant = (restaurant) => {
+const createCardRestaurant = restaurant => {
 
     const {image, kitchen, name, price, stars, products, time_of_delivery: timeOfDelivery} = restaurant
 
@@ -149,7 +156,7 @@ const createCardRestaurant = (restaurant) => {
     cardRestaurant.insertAdjacentHTML('beforeend', card)
     cardsRestaurants.insertAdjacentElement('beforeend', cardRestaurant)
 }
-const createCardGood = (goods) => {
+const createCardGood = goods => {
 
     const {description, image, name, price, id} = goods
 
@@ -177,7 +184,7 @@ const createCardGood = (goods) => {
     `)
     cardsMenu.insertAdjacentElement('beforeend', card)
 }
-const openGoods = (event) => {
+const openGoods = event => {
     const target = event.target
     if (login) {
         const restaurant = target.closest('.card-restaurant')
@@ -203,8 +210,7 @@ const openGoods = (event) => {
         toggleModalAuth()
     }
 }
-
-const addToCart = (event) => {
+const addToCart = event => {
     const target = event.target
     const buttonAddToCart = target.closest('.button-add-cart')
 
@@ -222,8 +228,8 @@ const addToCart = (event) => {
         }
         console.log(cart)
     }
+    saveCart()
 }
-
 const renderCart = () => {
     modalBody.textContent = ''
 
@@ -245,8 +251,7 @@ const renderCart = () => {
     const totalPrice = cart.reduce((result, item) => result + (parseFloat(item.cost) * item.count), 0)
     modalPrice.textContent = totalPrice + ' ₽'
 }
-
-const changeCount = (event) => {
+const changeCount = event => {
     const target = event.target
 
     if (target.classList.contains('counter-button')) {
@@ -258,6 +263,7 @@ const changeCount = (event) => {
         if (target.classList.contains('counter-plus')) food.count++
         renderCart()
     }
+    saveCart()
 }
 
 const init = () => {
@@ -270,10 +276,8 @@ const init = () => {
         renderCart()
     })
     modalBody.addEventListener('click', changeCount)
-    cartButton.addEventListener('click', () => {
-        renderCart()
-        toggleModal()
-    })
+    cartButton.addEventListener('click', renderCart)
+    cartButton.addEventListener('click', toggleModal)
     cardsMenu.addEventListener('click', addToCart)
     close.addEventListener('click', toggleModal)
     cardsRestaurants.addEventListener('click', openGoods)
@@ -285,7 +289,7 @@ const init = () => {
 
     checkAuth()
 
-    inputSearch.addEventListener('keypress', (event) => {
+    inputSearch.addEventListener('keypress', event => {
         if (event.charCode === 13) {
             const value = event.target.value.trim()
 
